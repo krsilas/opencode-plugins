@@ -77,6 +77,8 @@ export function LineCommentEditor(props: LineCommentEditorProps) {
 		<div
 			{...rest}
 			data-component="line-comment-v2"
+			data-variant="editor"
+			data-layout="compact"
 			classList={{
 				...local.classList,
 				[local.class ?? ""]: !!local.class,

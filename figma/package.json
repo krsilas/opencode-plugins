@@ -1,6 +1,6 @@
 {
 	"name": "opencode-figma",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "OpenCode plugin: Figma files in a session's side panel, with annotated areas attached to the prompt.",
 	"keywords": [
 		"figma",
