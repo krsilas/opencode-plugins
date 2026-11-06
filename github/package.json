@@ -10,6 +10,11 @@
 	],
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Silas Krause",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/krsilas/opencode-plugins.git",
+		"directory": "github"
+	},
 	"files": [
 		"src/*.ts",
 		"dist"
