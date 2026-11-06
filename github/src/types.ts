@@ -272,6 +272,7 @@ export type PullItem = typeof PullItem.Type
 
 export const PullList = Schema.Struct({
 	total: Schema.Number,
+	open: Schema.Number,
 	items: Schema.Array(PullItem),
 })
 

@@ -384,7 +384,7 @@ export const item = (raw: RawItem): PullItem => ({
 	deletions: raw.deletions ?? 0,
 })
 
-export const items = (result: RawSearchList | null | undefined): PullList => ({
+export const items = (result: RawSearchList | null | undefined): Omit<PullList, "open"> => ({
 	total: result?.issueCount ?? 0,
 	items: nodes(result).flatMap((node) => (node.headRefName !== undefined ? [item(node)] : [])),
 })

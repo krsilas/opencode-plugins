@@ -552,7 +552,9 @@ export default Plugin.define({
 								Match.exhaustive,
 							)
 
-						return { total: fits ? 1 : 0, items: fits ? [found] : [] }
+						const open = fits && (found.state === "open" || found.state === "draft")
+
+						return { total: fits ? 1 : 0, open: open ? 1 : 0, items: fits ? [found] : [] }
 					}
 
 					const queries = listQueries(input.owner, input.name, input.search)
@@ -566,12 +568,17 @@ export default Plugin.define({
 						const open = items(data.mineOpen)
 						const closed = items(data.mineClosed)
 
-						return { total: open.total + closed.total, items: [...open.items, ...closed.items] }
+						return {
+							total: open.total + closed.total,
+							open: open.total,
+							items: [...open.items, ...closed.items],
+						}
 					}
 
 					const data = await gh.graphql<ListQueryData>(LIST_QUERY, { search: queries[input.list] })
+					const list = items(data.list)
 
-					return items(data.list)
+					return { ...list, open: input.list === "open" ? list.total : 0 }
 				}),
 			locate: async (input) => {
 				const located: Located[] = []

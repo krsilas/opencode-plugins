@@ -6,7 +6,7 @@ import { GitHub } from "../src/rpc.ts"
 
 test("RPC output validator omits undefined nested fields and rejects invalid values", async () => {
 	const row = item({ number: 7, headRefName: "feature" })
-	const input = { total: 1, items: [row] }
+	const input = { total: 1, open: 1, items: [row] }
 	const schema = GitHub.methods.pulls.output
 	assert.strictEqual(Schema.isSchema(schema), false)
 	const result = await schema["~standard"].validate(input)
@@ -19,6 +19,6 @@ test("RPC output validator omits undefined nested fields and rejects invalid val
 	assert.ok("name" in input.items[0]!.author)
 	assert.strictEqual(input.items[0]!.author.name, undefined)
 
-	const invalid = await schema["~standard"].validate({ total: "one", items: [] })
+	const invalid = await schema["~standard"].validate({ total: "one", open: 0, items: [] })
 	assert.notStrictEqual(invalid.issues, undefined)
 })

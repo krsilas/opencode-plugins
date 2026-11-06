@@ -309,7 +309,7 @@ function PullBrowser(props: { ctx: Ctx; state: State; close: () => void }) {
 									onClick={() => setTab(id)}
 								>
 									{t(`pulls.tab.${id}`)}
-									<Show when={listOf(id)}>{(value) => <span class="ghp-counter">{value().total}</span>}</Show>
+									<Show when={listOf(id)?.open}>{(open) => <span class="ghp-counter">{open()}</span>}</Show>
 								</button>
 							)}
 						</For>
