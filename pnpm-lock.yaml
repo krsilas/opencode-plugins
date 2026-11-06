@@ -173,6 +173,9 @@ catalogs:
     '@types/node':
       specifier: ^26.6.5
       version: 26.6.6
+    effect:
+      specifier: 4.0.1
+      version: 4.0.1
     solid-js:
       specifier: ^1.9.17
       version: 1.9.18
@@ -219,6 +222,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
+      effect:
+        specifier: 'catalog:'
+        version: 4.0.1
       electron:
         specifier: ^39.0.0
         version: 39.8.10
@@ -247,6 +253,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
+      effect:
+        specifier: 'catalog:'
+        version: 4.0.1
       electron:
         specifier: ^38.0.0
         version: 38.8.6
@@ -278,6 +287,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
+      effect:
+        specifier: 'catalog:'
+        version: 4.0.1
       solid-js:
         specifier: 'catalog:'
         version: 1.9.18

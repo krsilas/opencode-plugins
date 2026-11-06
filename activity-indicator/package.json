@@ -39,11 +39,15 @@
 	},
 	"devDependencies": {
 		"@types/node": "catalog:",
+		"effect": "catalog:",
 		"electron": "^39.0.0",
 		"solid-js": "catalog:",
 		"typescript": "catalog:",
 		"vite": "catalog:",
 		"vite-plugin-solid": "catalog:",
 		"vite-plus": "catalog:"
+	},
+	"peerDependencies": {
+		"effect": "^4.0.0"
 	}
 }
