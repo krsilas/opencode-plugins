@@ -1,0 +1,44 @@
+{
+	"name": "opencode-activity-indicator",
+	"version": "0.1.0",
+	"description": "OpenCode plugin: macOS menu bar session status and Dock badges for pending input prompts.",
+	"keywords": [
+		"menubar",
+		"opencode",
+		"opencode-plugin"
+	],
+	"license": "SEE LICENSE IN LICENSE",
+	"author": "Silas Krause",
+	"files": [
+		"src/*.ts",
+		"dist"
+	],
+	"type": "module",
+	"exports": {
+		"./gui-experimental": "./dist/gui-experimental.cjs"
+	},
+	"scripts": {
+		"build": "vp build",
+		"dev": "vp build --watch",
+		"lint": "vp lint --deny-warnings src tests vite.config.ts",
+		"lint:fix": "vp lint --fix --deny-warnings src tests vite.config.ts",
+		"format": "vp fmt src tests vite.config.ts",
+		"format:check": "vp fmt --check src tests vite.config.ts",
+		"typecheck": "tsc --noEmit",
+		"test": "node --test tests/*.test.ts",
+		"prepack": "vp run build",
+		"prepublishOnly": "vp run typecheck && vp run test"
+	},
+	"dependencies": {
+		"@opencode/plugin": "catalog:"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"electron": "^39.0.0",
+		"solid-js": "catalog:",
+		"typescript": "catalog:",
+		"vite": "catalog:",
+		"vite-plugin-solid": "catalog:",
+		"vite-plus": "catalog:"
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"name": "opencode-plugins-workspace",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "vp run -r build",
+		"dev": "vp run -r --parallel dev",
+		"check": "vp check --deny-warnings && vp run typecheck",
+		"lint": "vp lint --deny-warnings",
+		"lint:fix": "vp lint --fix --deny-warnings",
+		"format": "vp fmt",
+		"format:check": "vp fmt --check",
+		"typecheck": "tsc --noEmit && vp run -r typecheck",
+		"test": "vp run -r test"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"typescript": "catalog:",
+		"vite": "catalog:",
+		"vite-plus": "catalog:"
+	},
+	"engines": {
+		"node": "^24.11.0 || >=26.0.0"
+	},
+	"packageManager": "pnpm@12.16.1"
+}

@@ -1,0 +1,45 @@
+{
+	"hard_tabs": true,
+	"tab_size": 2,
+	"lsp": {
+		"oxlint": {
+			"initialization_options": {
+				"settings": { "fixKind": "safe_fix", "configPath": "./vite.config.ts", "disableNestedConfig": true }
+			}
+		},
+		"oxfmt": {
+			"initialization_options": {
+				"settings": { "fmt.configPath": "./vite.config.ts", "run": "onSave" }
+			}
+		}
+	},
+	"languages": {
+		"JavaScript": {
+			"language_servers": ["oxlint", "oxfmt", "..."],
+			"format_on_save": "on",
+			"formatter": [{ "language_server": { "name": "oxfmt" } }, { "code_action": "source.fixAll.oxc" }]
+		},
+		"TypeScript": {
+			"language_servers": ["oxlint", "oxfmt", "..."],
+			"format_on_save": "on",
+			"formatter": [{ "language_server": { "name": "oxfmt" } }, { "code_action": "source.fixAll.oxc" }]
+		},
+		"TSX": {
+			"language_servers": ["oxlint", "oxfmt", "..."],
+			"format_on_save": "on",
+			"formatter": [{ "language_server": { "name": "oxfmt" } }, { "code_action": "source.fixAll.oxc" }]
+		},
+		"JSON": {
+			"format_on_save": "on",
+			"formatter": { "language_server": { "name": "oxfmt" } }
+		},
+		"JSONC": {
+			"format_on_save": "on",
+			"formatter": { "language_server": { "name": "oxfmt" } }
+		},
+		"CSS": {
+			"format_on_save": "on",
+			"formatter": { "language_server": { "name": "oxfmt" } }
+		}
+	}
+}
