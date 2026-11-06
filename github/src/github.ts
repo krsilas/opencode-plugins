@@ -359,10 +359,10 @@ export const listQueries = (owner: string, name: string, search = "", now = Date
 	const text = search.trim().replace(/^#(?=\d+$)/, "")
 
 	return {
-		mineOpen: `${repo} author:@me is:open ${text || `updated:>=${since}`}`,
+		mineOpen: `${repo} author:@me is:open${text ? ` ${text}` : ""}`,
 		mineClosed: `${repo} author:@me is:closed ${text || `closed:>=${since}`}`,
-		open: `${repo} is:open ${text || `involves:@me updated:>=${since}`}`,
-		merged: `${repo} is:merged ${text || `involves:@me updated:>=${since}`}`,
+		open: `${repo} is:open${text ? ` ${text}` : ""}`,
+		merged: `${repo} is:merged ${text || `updated:>=${since}`}`,
 	}
 }
 
