@@ -9,7 +9,7 @@
 	],
 	"license": "SEE LICENSE IN LICENSE",
 	"author": "Silas Krause",
-	"homepage": "https://github.com/krsilas/opencode-plugins/blob/main/activity-indicator/README.md",
+	"homepage": "https://github.com/krsilas/opencode-plugins/tree/main/activity-indicator",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/krsilas/opencode-plugins.git",
