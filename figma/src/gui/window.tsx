@@ -21,7 +21,7 @@ import { lineCommentCss } from "./line-comment/shims"
 import { Launcher } from "./launcher"
 import { FigmaSettings } from "./settings"
 import { FigmaEntry, type definition } from "./definition"
-import { fileKey, fileName, figmaUrl, hasNode, nodeId, parseFigmaUrl, supportsDev, type View } from "./url"
+import { fileKey, fileName, figmaUrl, hasNode, nodeId, parseFigmaUrl, supportsDev, toolbarKey, type View } from "./url"
 import css from "./styles.css?inline"
 
 const ICON = "pencil-line"
@@ -163,7 +163,7 @@ function FigmaPane(props: {
 	)
 
 	createKeyed(
-		() => `${fileName(url())}\n${updatedAt() ?? ""}`,
+		() => toolbarKey(url(), updatedAt()),
 		() => {
 			const handle = requestAnimationFrame(fit)
 			onCleanup(() => cancelAnimationFrame(handle))
