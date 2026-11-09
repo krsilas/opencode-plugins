@@ -67,7 +67,7 @@
 	"annotate.failed": "Bereich konnte nicht hinzugefügt werden",
 	"annotate.nocapture": "Die Figma-Ansicht ist noch nicht sichtbar. Versuche es gleich erneut.",
 	"annotate.nosession": "Öffne diese Sitzung, um den Bereich zu ihrem Prompt hinzuzufügen.",
-	"annotate.processing": "Wird verarbeitet…",
+	"annotate.processing": "Auswahl wird in Originalauflösung gerendert…",
 	"toolbar.share": "Datei-URL für den Agenten freigeben",
 	"toolbar.unshare": "Datei-URL vor dem Agenten verbergen",
 	"toolbar.updated": "Zuletzt aktualisiert",

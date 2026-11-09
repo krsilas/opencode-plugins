@@ -67,7 +67,7 @@
 	"annotate.failed": "Could not add the area",
 	"annotate.nocapture": "The Figma view isn't visible yet. Try again in a moment.",
 	"annotate.nosession": "Open this session to add the area to its prompt.",
-	"annotate.processing": "Processing…",
+	"annotate.processing": "Rendering at original resolution…",
 	"toolbar.share": "Let agent see the file URL",
 	"toolbar.unshare": "Hide the file URL from agent",
 	"toolbar.updated": "Last updated",

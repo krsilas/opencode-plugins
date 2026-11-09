@@ -88,6 +88,10 @@ export function fileName(url: string): string {
 	return slug ? decodeURIComponent(slug).replace(/-/g, " ") : "Figma"
 }
 
+export function toolbarKey(url: string, updatedAt: string | undefined): string | undefined {
+	return url ? `${fileName(url)}\n${updatedAt ?? ""}` : undefined
+}
+
 export function fileKey(url: string): string | undefined {
 	if (!URL.canParse(url)) return undefined
 
