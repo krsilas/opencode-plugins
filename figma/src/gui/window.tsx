@@ -67,6 +67,48 @@ function FigmaLogo() {
 
 type Ctx = Parameters<Plugin.Setup<typeof definition>>[0]
 
+const entryName = (entry: FigmaEntry) => entry.title || fileName(entry.url)
+
+function TitleInput(props: { class: string; value: string; label: string; done: (value?: string) => void }) {
+	let finished = false
+
+	const finish = (value?: string) => {
+		if (finished) return
+		finished = true
+		props.done(value)
+	}
+
+	return (
+		<input
+			ref={(element) =>
+				requestAnimationFrame(() => {
+					element.focus()
+					element.select()
+				})
+			}
+			class={`${props.class} figma-title-input`}
+			value={props.value}
+			aria-label={props.label}
+			spellcheck={false}
+			onKeyDown={(event) => {
+				if (event.isComposing) return
+
+				if (event.key === "Enter") {
+					event.preventDefault()
+					finish(event.currentTarget.value)
+				}
+
+				if (event.key === "Escape") {
+					event.preventDefault()
+					event.stopPropagation()
+					finish()
+				}
+			}}
+			onBlur={(event) => finish(event.currentTarget.value)}
+		/>
+	)
+}
+
 function FigmaPane(props: {
 	session: MountedSession
 	tab: PanelTab
@@ -96,6 +138,11 @@ function FigmaPane(props: {
 	}
 
 	const url = () => file()?.url || ""
+	const title = () => {
+		const entry = file()
+
+		return entry ? entryName(entry) : ""
+	}
 
 	const key = () => {
 		const entry = file()
@@ -124,6 +171,33 @@ function FigmaPane(props: {
 		observer.observe(element)
 		onCleanup(() => observer.disconnect())
 	})
+
+	const [editState, setEditState] = createSignal<{ id: string; target: "file" | "node" }>()
+	const editing = () => {
+		const state = editState()
+
+		return state && state.id === file()?.id ? state.target : undefined
+	}
+	const node = () => file()?.nodeTitle || nodeName()
+
+	const rename = (target: "file" | "node", value?: string) => {
+		setEditState(undefined)
+
+		if (value === undefined) return
+		const next = value.trim()
+		const fallback = target === "file" ? fileName(url()) : nodeName()
+		const stored = next && next !== fallback ? next : undefined
+
+		update(target === "file" ? { title: stored } : { nodeTitle: stored })
+	}
+
+	const edit = (target: "file" | "node") => (event: MouseEvent) => {
+		const entry = file()
+
+		if (!entry) return
+		event.preventDefault()
+		setEditState({ id: entry.id, target })
+	}
 
 	const [toolbar, setToolbar] = createSignal<HTMLDivElement>()
 	const [controls, setControls] = createSignal<HTMLDivElement>()
@@ -163,7 +237,11 @@ function FigmaPane(props: {
 	)
 
 	createKeyed(
-		() => toolbarKey(url(), updatedAt()),
+		() => {
+			const base = toolbarKey(url(), updatedAt())
+
+			return base && `${base}\n${title()}\n${node() ?? ""}\n${editing() ?? ""}`
+		},
 		() => {
 			const handle = requestAnimationFrame(fit)
 			onCleanup(() => cancelAnimationFrame(handle))
@@ -400,13 +478,48 @@ function FigmaPane(props: {
 			<div class="figma-panel" ref={setPanel}>
 				<div class="figma-toolbar" ref={setToolbar} data-wrap={wrap() ? "" : undefined}>
 					<span class="figma-name">
-						<Show when={updatedAt()} fallback={<span class="figma-file">{fileName(url())}</span>}>
-							<ctx.ui.Tooltip value={`${ctx.t("toolbar.updated")} ${formatTime(updatedAt()!)}`}>
-								<span class="figma-file">{fileName(url())}</span>
-							</ctx.ui.Tooltip>
+						<Show
+							when={editing() !== "file"}
+							fallback={
+								<TitleInput
+									class="figma-file"
+									value={title()}
+									label={ctx.t("toolbar.rename.file")}
+									done={(value) => rename("file", value)}
+								/>
+							}
+						>
+							<Show
+								when={updatedAt()}
+								fallback={
+									<span class="figma-file" onContextMenu={edit("file")}>
+										{title()}
+									</span>
+								}
+							>
+								<ctx.ui.Tooltip value={`${ctx.t("toolbar.updated")} ${formatTime(updatedAt()!)}`}>
+									<span class="figma-file" onContextMenu={edit("file")}>
+										{title()}
+									</span>
+								</ctx.ui.Tooltip>
+							</Show>
 						</Show>
-						<Show when={scope() === "node" && nodeName()}>
-							<span class="figma-node">{nodeName()}</span>
+						<Show when={scope() === "node" && (node() || editing() === "node")}>
+							<Show
+								when={editing() !== "node"}
+								fallback={
+									<TitleInput
+										class="figma-node"
+										value={node() ?? ""}
+										label={ctx.t("toolbar.rename.node")}
+										done={(value) => rename("node", value)}
+									/>
+								}
+							>
+								<span class="figma-node" onContextMenu={edit("node")}>
+									{node()}
+								</span>
+							</Show>
 						</Show>
 					</span>
 					<span class="figma-break" />
@@ -470,7 +583,7 @@ function FigmaPane(props: {
 													type: "group" as const,
 													label: ctx.t("toolbar.files"),
 													items: files().map((entry) => ({
-														label: fileName(entry.url),
+														label: entryName(entry),
 														icon: entry.id === file()?.id ? ("check" as const) : ("file-document" as const),
 														onSelect: () => props.setPicked(viewKey(props.session.key, entry.id)),
 													})),
@@ -528,7 +641,7 @@ function FigmaPane(props: {
 						<ctx.embeds.View id={embedId()} page={url()} visible frozen={!!still()} radius={8} class="figma-view" />
 						<Show when={still()}>
 							<AnnotateLayer
-								subject={[fileName(url()), scope() === "node" ? nodeName() : undefined].filter(Boolean).join(" › ")}
+								subject={[title(), scope() === "node" ? node() : undefined].filter(Boolean).join(" › ")}
 								onCancel={stop}
 								onSubmit={async (area, size, comment, send) => {
 									try {
@@ -589,7 +702,7 @@ export const setup: Plugin.Setup<typeof definition> = (ctx: Ctx) => {
 		const name = (ref: SessionRef) => {
 			const entry = files(ref).find((file) => file.id === id)
 
-			return entry ? fileName(entry.url) : ctx.t("title")
+			return entry ? entryName(entry) : ctx.t("title")
 		}
 
 		const created: PanelTab = {
@@ -878,7 +991,7 @@ export const setup: Plugin.Setup<typeof definition> = (ctx: Ctx) => {
 			if (!file) return false
 
 			return {
-				title: fileName(file.url),
+				title: entryName(file),
 				detail: ctx.t("title"),
 				data: JSON.stringify(file),
 			}

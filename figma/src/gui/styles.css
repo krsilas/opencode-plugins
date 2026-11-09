@@ -49,6 +49,29 @@
 	opacity: 0.5;
 }
 
+.figma-toolbar .figma-title-input {
+	field-sizing: content;
+	min-width: 4ch;
+	margin: -2px -4px;
+	padding: 1px 3px;
+	border: 1px solid var(--v2-border-border-base);
+	border-radius: 4px;
+	background: transparent;
+	font-family: inherit;
+	line-height: inherit;
+	color: inherit;
+	outline: none;
+}
+
+.figma-toolbar .figma-file.figma-title-input {
+	color: var(--text-strong);
+}
+
+.figma-toolbar .figma-node.figma-title-input {
+	opacity: 1;
+	font-size: inherit;
+}
+
 .figma-controls {
 	display: flex;
 	flex: none;

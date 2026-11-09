@@ -7,6 +7,8 @@ const Settings = {
 	shared: Schema.optional(Schema.Boolean),
 	view: Schema.optional(Schema.Literals(["node", "file"])),
 	dev: Schema.optional(Schema.Boolean),
+	title: Schema.optional(Schema.String),
+	nodeTitle: Schema.optional(Schema.String),
 }
 
 export const FigmaEntry = Schema.Struct({ id: Schema.String, url: Schema.String, ...Settings })
