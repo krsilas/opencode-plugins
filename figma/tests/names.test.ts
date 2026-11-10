@@ -1,6 +1,6 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
-import { fileTitle, listTitle, nodeTitle, rename, visit } from "../src/gui/names.ts"
+import { fileTitle, nodeTitle, rename, visit } from "../src/gui/names.ts"
 
 const url = "https://www.figma.com/design/abc/My-File?node-id=1-2"
 const time = "2026-11-10T10:00:00Z"
