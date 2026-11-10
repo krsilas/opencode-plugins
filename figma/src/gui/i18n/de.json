@@ -74,6 +74,8 @@
 	"toolbar.external": "In Figma öffnen",
 	"toolbar.rename.file": "Dateiname",
 	"toolbar.rename.node": "Node-Name",
+	"toolbar.rename.file.action": "Datei umbenennen",
+	"toolbar.rename.node.action": "Node umbenennen",
 	"error.unavailable": "Figma-Einbettungen erfordern OpenCode Desktop.",
 	"error.stale": "Der Hintergrundprozess des Plugins ist veraltet. Schalte das Figma-Plugin unter Einstellungen > Erweiterungen > Plugins aus und wieder ein oder starte OpenCode neu."
 }

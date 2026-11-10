@@ -23,10 +23,11 @@
 .figma-toolbar .figma-name {
 	flex: 1;
 	display: flex;
-	align-items: baseline;
+	align-items: center;
 	gap: 6px;
 	min-width: 0;
 	margin-inline-end: 8px;
+	font-size: 13px;
 	white-space: nowrap;
 }
 
@@ -38,7 +39,6 @@
 .figma-toolbar .figma-file {
 	flex: 0 1 auto;
 	max-width: 100%;
-	font-size: var(--font-size-large, 16px);
 	font-weight: var(--font-weight-medium);
 	color: var(--text-strong);
 }
@@ -58,6 +58,7 @@
 	border-radius: 4px;
 	background: transparent;
 	font-family: inherit;
+	font-size: inherit;
 	line-height: inherit;
 	color: inherit;
 	outline: none;
@@ -69,7 +70,6 @@
 
 .figma-toolbar .figma-node.figma-title-input {
 	opacity: 1;
-	font-size: inherit;
 }
 
 .figma-controls {

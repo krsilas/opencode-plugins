@@ -74,6 +74,8 @@
 	"toolbar.external": "Open in Figma",
 	"toolbar.rename.file": "File name",
 	"toolbar.rename.node": "Node name",
+	"toolbar.rename.file.action": "Rename File",
+	"toolbar.rename.node.action": "Rename Node",
 	"error.unavailable": "Figma embeds need OpenCode Desktop.",
 	"error.stale": "The plugin's background process is out of date. Turn the Figma plugin off and on in Settings > Extensions > Plugins, or restart OpenCode."
 }

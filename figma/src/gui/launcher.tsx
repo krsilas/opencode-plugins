@@ -3,6 +3,7 @@ import { createKeyed, createLatest, usePanel, usePlugin, type MountedSession } f
 import { FigmaAccount, FigmaView, INVALID_TEAM, type Listing } from "./contract"
 import type { definition } from "./definition"
 import { embedUrl, fileKey, fileName, hasNode } from "./url"
+import { listTitle } from "./names"
 
 const MAX_SHOWN_FILES = 5
 
@@ -41,7 +42,10 @@ export function Launcher(props: { session: MountedSession; open: (url: string) =
 		new Set((ctx.stores.file(props.session).value?.files ?? []).map((file) => fileKey(file.url)))
 
 	const unopened = (list: readonly Listing[] | null | undefined) =>
-		(list ?? []).filter((file) => !openedFileKeys().has(fileKey(file.url))).slice(0, MAX_SHOWN_FILES)
+		(list ?? [])
+			.filter((file) => !openedFileKeys().has(fileKey(file.url)))
+			.slice(0, MAX_SHOWN_FILES)
+			.map((file) => ({ ...file, name: listTitle(ctx.stores.history.value.files, file.url, file.name) }))
 
 	const recent = createLatest(
 		() => (desktop && frame.visible() ? {} : undefined),

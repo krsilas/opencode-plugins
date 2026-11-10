@@ -21,14 +21,13 @@ import { lineCommentCss } from "./line-comment/shims"
 import { Launcher } from "./launcher"
 import { FigmaSettings } from "./settings"
 import { FigmaEntry, type definition } from "./definition"
-import { fileKey, fileName, figmaUrl, hasNode, nodeId, parseFigmaUrl, supportsDev, toolbarKey, type View } from "./url"
+import { fileName, figmaUrl, hasNode, nodeId, parseFigmaUrl, supportsDev, toolbarKey, type View } from "./url"
+import { fileTitle, nodeTitle, rename, visit, type NameTarget } from "./names"
 import css from "./styles.css?inline"
 
 const ICON = "pencil-line"
 
 const LAUNCHER_TAB_ID = "new"
-
-const MAX_HISTORY_FILES = 20
 
 const decodeStoredEntry = Schema.decodeUnknownOption(Schema.fromJsonString(FigmaEntry))
 
@@ -67,8 +66,6 @@ function FigmaLogo() {
 
 type Ctx = Parameters<Plugin.Setup<typeof definition>>[0]
 
-const entryName = (entry: FigmaEntry) => entry.title || fileName(entry.url)
-
 function TitleInput(props: { class: string; value: string; label: string; done: (value?: string) => void }) {
 	let finished = false
 
@@ -88,6 +85,7 @@ function TitleInput(props: { class: string; value: string; label: string; done: 
 			}
 			class={`${props.class} figma-title-input`}
 			value={props.value}
+			placeholder={props.label}
 			aria-label={props.label}
 			spellcheck={false}
 			onKeyDown={(event) => {
@@ -138,11 +136,8 @@ function FigmaPane(props: {
 	}
 
 	const url = () => file()?.url || ""
-	const title = () => {
-		const entry = file()
-
-		return entry ? entryName(entry) : ""
-	}
+	const history = () => ctx.stores.history.value.files
+	const title = () => (url() ? fileTitle(history(), url()) : "")
 
 	const key = () => {
 		const entry = file()
@@ -172,31 +167,41 @@ function FigmaPane(props: {
 		onCleanup(() => observer.disconnect())
 	})
 
-	const [editState, setEditState] = createSignal<{ id: string; target: "file" | "node" }>()
+	const [editState, setEditState] = createSignal<{ id: string; target: NameTarget }>()
 	const editing = () => {
 		const state = editState()
 
 		return state && state.id === file()?.id ? state.target : undefined
 	}
-	const node = () => file()?.nodeTitle || nodeName()
+	const node = () => (url() ? nodeTitle(history(), url()) : undefined) || nodeName()
 
-	const rename = (target: "file" | "node", value?: string) => {
+	const save = (target: NameTarget, value?: string) => {
 		setEditState(undefined)
 
-		if (value === undefined) return
+		if (value === undefined || !url()) return
 		const next = value.trim()
 		const fallback = target === "file" ? fileName(url()) : nodeName()
 		const stored = next && next !== fallback ? next : undefined
-
-		update(target === "file" ? { title: stored } : { nodeTitle: stored })
+		const store = ctx.stores.history
+		store.set({ files: rename(store.value.files, url(), target, stored, new Date().toISOString()) })
 	}
 
-	const edit = (target: "file" | "node") => (event: MouseEvent) => {
+	const nameMenu = async (event: MouseEvent) => {
 		const entry = file()
 
-		if (!entry) return
+		if (!entry || event.target instanceof HTMLInputElement) return
 		event.preventDefault()
-		setEditState({ id: entry.id, target })
+		const choice = await view
+			.menu(
+				[
+					{ id: "file", label: ctx.t("toolbar.rename.file.action") },
+					...(scope() === "node" ? [{ id: "node", label: ctx.t("toolbar.rename.node.action") }] : []),
+				],
+				{ signal: ctx.signal },
+			)
+			.catch(() => null)
+
+		if (choice === "file" || choice === "node") setEditState({ id: entry.id, target: choice })
 	}
 
 	const [toolbar, setToolbar] = createSignal<HTMLDivElement>()
@@ -477,7 +482,7 @@ function FigmaPane(props: {
 		>
 			<div class="figma-panel" ref={setPanel}>
 				<div class="figma-toolbar" ref={setToolbar} data-wrap={wrap() ? "" : undefined}>
-					<span class="figma-name">
+					<span class="figma-name" onContextMenu={(event) => void nameMenu(event)}>
 						<Show
 							when={editing() !== "file"}
 							fallback={
@@ -485,22 +490,13 @@ function FigmaPane(props: {
 									class="figma-file"
 									value={title()}
 									label={ctx.t("toolbar.rename.file")}
-									done={(value) => rename("file", value)}
+									done={(value) => save("file", value)}
 								/>
 							}
 						>
-							<Show
-								when={updatedAt()}
-								fallback={
-									<span class="figma-file" onContextMenu={edit("file")}>
-										{title()}
-									</span>
-								}
-							>
+							<Show when={updatedAt()} fallback={<span class="figma-file">{title()}</span>}>
 								<ctx.ui.Tooltip value={`${ctx.t("toolbar.updated")} ${formatTime(updatedAt()!)}`}>
-									<span class="figma-file" onContextMenu={edit("file")}>
-										{title()}
-									</span>
+									<span class="figma-file">{title()}</span>
 								</ctx.ui.Tooltip>
 							</Show>
 						</Show>
@@ -512,13 +508,11 @@ function FigmaPane(props: {
 										class="figma-node"
 										value={node() ?? ""}
 										label={ctx.t("toolbar.rename.node")}
-										done={(value) => rename("node", value)}
+										done={(value) => save("node", value)}
 									/>
 								}
 							>
-								<span class="figma-node" onContextMenu={edit("node")}>
-									{node()}
-								</span>
+								<span class="figma-node">{node()}</span>
 							</Show>
 						</Show>
 					</span>
@@ -583,7 +577,7 @@ function FigmaPane(props: {
 													type: "group" as const,
 													label: ctx.t("toolbar.files"),
 													items: files().map((entry) => ({
-														label: entryName(entry),
+														label: fileTitle(history(), entry.url),
 														icon: entry.id === file()?.id ? ("check" as const) : ("file-document" as const),
 														onSelect: () => props.setPicked(viewKey(props.session.key, entry.id)),
 													})),
@@ -677,6 +671,7 @@ export const setup: Plugin.Setup<typeof definition> = (ctx: Ctx) => {
 
 	const tabKey = (id: string) => `${ctx.id}:${id}`
 	const files = (session: SessionRef) => ctx.stores.file(session).value?.files ?? []
+	const entryName = (entry: FigmaEntry) => fileTitle(ctx.stores.history.value.files, entry.url)
 
 	ctx.add(Style, css + lineCommentCss)
 
@@ -856,12 +851,7 @@ export const setup: Plugin.Setup<typeof definition> = (ctx: Ctx) => {
 		}
 
 		const history = ctx.stores.history
-		history.set({
-			files: [
-				{ url: link.url, time: new Date().toISOString() },
-				...history.value.files.filter((file) => fileKey(file.url) !== fileKey(link.url)),
-			].slice(0, MAX_HISTORY_FILES),
-		})
+		history.set({ files: visit(history.value.files, link.url, new Date().toISOString()) })
 		const list = files(session)
 		const existing = list.find((file) => file.url === link.url)
 
