@@ -8,7 +8,7 @@
 		"opencode-plugin"
 	],
 	"homepage": "https://github.com/krsilas/opencode-plugins/tree/main/figma",
-	"license": "SEE LICENSE IN LICENSE",
+	"license": "MIT",
 	"author": "Silas Krause",
 	"repository": {
 		"type": "git",

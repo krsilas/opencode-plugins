@@ -9,7 +9,7 @@
 		"pull-requests"
 	],
 	"homepage": "https://github.com/krsilas/opencode-plugins/tree/main/github",
-	"license": "SEE LICENSE IN LICENSE",
+	"license": "MIT",
 	"author": "Silas Krause",
 	"repository": {
 		"type": "git",
