@@ -1,33 +1,45 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
-import { fileTitle, nodeTitle, rename, visit } from "../src/gui/names.ts"
+import {
+	activeFiles,
+	fileTitle,
+	forgetHistory,
+	historyFiles,
+	nodeTitle,
+	rename,
+	unopened,
+	visit,
+} from "../src/gui/names.ts"
 
+const whole = "https://www.figma.com/design/abc/My-File"
 const url = "https://www.figma.com/design/abc/My-File?node-id=1-2"
+const other = "https://www.figma.com/design/abc/My-File?node-id=3-4"
 const time = "2026-11-10T10:00:00Z"
 
-test("renaming a file stores its title in the history entry", () => {
-	const history = [{ url: "https://www.figma.com/design/abc/My-File", time: "2026-11-01T10:00:00Z" }]
-	const next = rename(history, url, "file", "Checkout", time)
+test("file and node titles are shared across entries of the same file", () => {
+	let history = visit(visit([], url, "2026-11-01T10:00:00Z"), other, "2026-11-02T10:00:00Z")
+	history = rename(history, url, "file", "Checkout", time)
+	history = rename(history, url, "node", "Header", time)
+	history = rename(history, other, "node", "Footer", time)
 
-	assert.deepStrictEqual(next, [{ ...history[0], title: "Checkout" }])
-	assert.strictEqual(fileTitle(next, url), "Checkout")
-	assert.strictEqual(fileTitle(rename(next, url, "file", undefined, time), url), "My File")
+	assert.strictEqual(fileTitle(history, other), "Checkout")
+	assert.strictEqual(nodeTitle(history, url), "Header")
+	assert.strictEqual(nodeTitle(history, other), "Footer")
+	assert.strictEqual(fileTitle(rename(history, other, "file", undefined, time), url), "My File")
+	assert.strictEqual(nodeTitle(rename(history, other, "node", undefined, time), other), undefined)
 })
 
-test("renaming a node works without a fetched node name and keeps other nodes", () => {
-	const other = "https://www.figma.com/design/abc/My-File?node-id=3-4"
-	const named = rename(rename([], url, "node", "Header", time), other, "node", "Footer", time)
+test("recent, active, and history lists are unique per node", () => {
+	let history = visit(visit([], url, "2026-11-01T10:00:00Z"), other, time)
+	history = rename(history, other, "node", "Footer", time)
+	const opened = [{ url }]
 
-	assert.deepStrictEqual(named, [{ url: other, time, nodes: { "1:2": "Header", "3:4": "Footer" } }])
-	assert.strictEqual(nodeTitle(named, url), "Header")
-	assert.deepStrictEqual(rename(named, other, "node", undefined, time), [
-		{ url: other, time, nodes: { "1:2": "Header" } },
+	assert.deepStrictEqual(unopened([{ url: whole, name: "My File", time }], opened, history), [
+		{ url: whole, name: "My File", time },
 	])
-})
-
-test("opening a file again keeps its stored names", () => {
-	const history = rename([], url, "file", "Checkout", "2026-11-01T10:00:00Z")
-	const reopened = visit(history, "https://www.figma.com/design/abc/My-File", time)
-
-	assert.deepStrictEqual(reopened, [{ url: "https://www.figma.com/design/abc/My-File", time, title: "Checkout" }])
+	assert.deepStrictEqual(activeFiles([url, other], opened, history), [
+		{ url: other, name: "My File › Footer", time: null },
+	])
+	assert.deepStrictEqual(historyFiles(history, opened), [{ url: other, name: "My File › Footer", time }])
+	assert.strictEqual(forgetHistory(history, url).length, 1)
 })

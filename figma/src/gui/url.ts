@@ -78,6 +78,8 @@ export function embedUrl(url: string, options: EmbedOptions): string {
 }
 
 export function nodeId(url: string): string | undefined {
+	if (!URL.canParse(url)) return undefined
+
 	return new URL(url).searchParams.get("node-id")?.replace(/-/g, ":") || undefined
 }
 
@@ -96,6 +98,15 @@ export function fileKey(url: string): string | undefined {
 	if (!URL.canParse(url)) return undefined
 
 	return new URL(url).pathname.split("/").filter(Boolean)[1]
+}
+
+export function targetKey(url: string, view?: View): string | undefined {
+	const key = fileKey(url)
+
+	if (!key) return undefined
+	const node = view === "file" ? undefined : nodeId(url)
+
+	return node ? `${key}\n${node}` : key
 }
 
 export function fileLink(kind: "design" | "board" | "slides", key: string, name: string): string {

@@ -22,7 +22,17 @@ import { lineCommentCss } from "./line-comment/shims"
 import { Launcher } from "./launcher"
 import { FigmaSettings } from "./settings"
 import { FigmaEntry, type definition } from "./definition"
-import { fileName, figmaUrl, hasNode, nodeId, parseFigmaUrl, supportsDev, toolbarKey, type View } from "./url"
+import {
+	fileName,
+	figmaUrl,
+	hasNode,
+	nodeId,
+	parseFigmaUrl,
+	supportsDev,
+	targetKey,
+	toolbarKey,
+	type View,
+} from "./url"
 import { fileTitle, nodeTitle, rename, visit, type NameTarget } from "./names"
 import css from "./styles.css?inline"
 
@@ -854,7 +864,8 @@ export const setup: Plugin.Setup<typeof definition> = (ctx: Ctx) => {
 		const history = ctx.stores.history
 		history.set({ files: visit(history.value.files, link.url, new Date().toISOString()) })
 		const list = files(session)
-		const existing = list.find((file) => file.url === link.url)
+		const target = targetKey(link.url)
+		const existing = list.find((file) => targetKey(file.url, file.view) === target)
 
 		if (existing) {
 			show(session, existing.id)

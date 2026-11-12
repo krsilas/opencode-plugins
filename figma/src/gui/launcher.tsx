@@ -2,10 +2,8 @@ import { createSignal, For, Show, type JSX } from "solid-js"
 import { createKeyed, createLatest, usePanel, usePlugin, type MountedSession } from "@opencode/plugin/gui"
 import { FigmaAccount, FigmaView, INVALID_TEAM, type Listing } from "./contract"
 import type { definition } from "./definition"
-import { embedUrl, fileKey, fileName, hasNode } from "./url"
-import { listTitle } from "./names"
-
-const MAX_SHOWN_FILES = 5
+import { embedUrl, hasNode } from "./url"
+import { activeFiles, forgetHistory, historyFiles, unopened } from "./names"
 
 const units: [Intl.RelativeTimeFormatUnit, number][] = [
 	["year", 365 * 24 * 3600],
@@ -38,21 +36,15 @@ export function Launcher(props: { session: MountedSession; open: (url: string) =
 	const [link, setLink] = createSignal("")
 	const desktop = ctx.app.platform === "desktop"
 
-	const openedFileKeys = () =>
-		new Set((ctx.stores.file(props.session).value?.files ?? []).map((file) => fileKey(file.url)))
-
-	const unopened = (list: readonly Listing[] | null | undefined) =>
-		(list ?? [])
-			.filter((file) => !openedFileKeys().has(fileKey(file.url)))
-			.slice(0, MAX_SHOWN_FILES)
-			.map((file) => ({ ...file, name: listTitle(ctx.stores.history.value.files, file.url, file.name) }))
+	const opened = () => ctx.stores.file(props.session).value?.files ?? []
+	const historyEntries = () => ctx.stores.history.value.files
 
 	const recent = createLatest(
 		() => (desktop && frame.visible() ? {} : undefined),
 		(_key, signal) => account.recent({ signal }).catch(() => null),
 	)
 
-	const recents = () => unopened(recent.latest)
+	const recents = () => unopened(recent.latest, opened(), historyEntries())
 	const fallback = () => !recent.loading && recents().length === 0
 
 	const active = createLatest(
@@ -60,34 +52,8 @@ export function Launcher(props: { session: MountedSession; open: (url: string) =
 		(_key, signal) => view.active({ signal }).catch((): readonly string[] => []),
 	)
 
-	const others = () => {
-		const seen = new Set<string | undefined>()
-
-		const list = (active.latest ?? []).flatMap((url) => {
-			const key = fileKey(url)
-
-			if (seen.has(key)) return []
-			seen.add(key)
-
-			return [{ url, name: fileName(url), time: null }]
-		})
-
-		return unopened(list)
-	}
-
-	const history = () => {
-		const activeFileKeys = new Set((active.latest ?? []).map(fileKey))
-
-		const list = ctx.stores.history.value.files
-			.filter((file) => !activeFileKeys.has(fileKey(file.url)))
-			.map((file) => ({
-				url: file.url,
-				name: fileName(file.url),
-				time: file.time,
-			}))
-
-		return unopened(list)
-	}
+	const others = () => activeFiles(active.latest, opened(), historyEntries())
+	const history = () => historyFiles(historyEntries(), opened(), fallback() ? active.latest : undefined)
 
 	const state = () => account.state()
 	const connected = () => !!state()?.user
@@ -109,6 +75,7 @@ export function Launcher(props: { session: MountedSession; open: (url: string) =
 		() => (fallback() && frame.visible() && connected() ? team()?.id : undefined),
 		(id, signal) => account.edited(id, { signal }),
 	)
+	const editedFiles = () => unopened(edited.latest, opened(), historyEntries())
 
 	const addTeam = async () => {
 		const raw = await ctx.dialogs.prompt({
@@ -204,7 +171,7 @@ export function Launcher(props: { session: MountedSession; open: (url: string) =
 		if (choice === "remove") {
 			const historyStore = ctx.stores.history
 			historyStore.set({
-				files: historyStore.value.files.filter((entry) => fileKey(entry.url) !== fileKey(file.url)),
+				files: forgetHistory(historyStore.value.files, file.url),
 			})
 		}
 	}
@@ -343,10 +310,10 @@ export function Launcher(props: { session: MountedSession; open: (url: string) =
 									>
 										<Show when={!edited.loading || edited.latest} fallback={<ctx.ui.Loader size="small" />}>
 											<Show
-												when={unopened(edited.latest).length > 0}
+												when={editedFiles().length > 0}
 												fallback={<div class="figma-launcher-note">{ctx.t("launcher.none")}</div>}
 											>
-												<Rows files={unopened(edited.latest)} />
+												<Rows files={editedFiles()} />
 											</Show>
 										</Show>
 									</Show>
