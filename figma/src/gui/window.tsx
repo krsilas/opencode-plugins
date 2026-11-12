@@ -2,6 +2,7 @@ import { createSignal, onCleanup, Show, type Accessor } from "solid-js"
 import {
 	Command,
 	createKeyed,
+	LinkHandler,
 	MenuItem,
 	Panel,
 	SettingsPage,
@@ -888,6 +889,17 @@ export const setup: Plugin.Setup<typeof definition> = (ctx: Ctx) => {
 		if (ctx.layout.state(tabKey(LAUNCHER_TAB_ID), session) !== "closed")
 			ctx.layout.close(tabKey(LAUNCHER_TAB_ID), session)
 	}
+
+	ctx.add(LinkHandler, {
+		priority: 10,
+		match: (link) => !!parseFigmaUrl(link.href) && !!(link.session ?? ctx.sessions.current()),
+		exists: () => true,
+		open: (link) => {
+			const session = link.session ?? ctx.sessions.current()
+
+			if (session) embed(session, link.href)
+		},
+	})
 
 	createKeyed(
 		() => ctx.client,
