@@ -168,14 +168,14 @@ catalogs:
       specifier: ^7.0.8
       version: 7.0.8
     '@opencode/plugin':
-      specifier: 2.2.0
-      version: 2.2.0
+      specifier: 2.3.2
+      version: 2.3.2
     '@types/node':
       specifier: ^26.6.5
       version: 26.6.6
     effect:
-      specifier: 4.0.1
-      version: 4.0.1
+      specifier: 4.1.0
+      version: 4.1.0
     solid-js:
       specifier: ^1.9.17
       version: 1.9.18
@@ -217,14 +217,14 @@ importers:
     dependencies:
       '@opencode/plugin':
         specifier: 'catalog:'
-        version: 2.2.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
+        version: 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
       effect:
         specifier: 'catalog:'
-        version: 4.0.1
+        version: 4.1.0
       electron:
         specifier: ^39.0.0
         version: 39.8.10
@@ -248,14 +248,14 @@ importers:
     dependencies:
       '@opencode/plugin':
         specifier: 'catalog:'
-        version: 2.2.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@38.8.6)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
+        version: 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@38.8.6)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
       effect:
         specifier: 'catalog:'
-        version: 4.0.1
+        version: 4.1.0
       electron:
         specifier: ^38.0.0
         version: 38.8.6
@@ -282,14 +282,42 @@ importers:
         version: 7.0.8
       '@opencode/plugin':
         specifier: 'catalog:'
-        version: 2.2.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
+        version: 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
       effect:
         specifier: 'catalog:'
-        version: 4.0.1
+        version: 4.1.0
+      solid-js:
+        specifier: 'catalog:'
+        version: 1.9.18
+      typescript:
+        specifier: 'catalog:'
+        version: 7.0.2
+      vite:
+        specifier: 'catalog:'
+        version: '@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2)'
+      vite-plugin-solid:
+        specifier: 'catalog:'
+        version: 2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18)
+      vite-plus:
+        specifier: 'catalog:'
+        version: 1.5.0(@opentelemetry/api@1.9.0)(@types/node@26.6.6)(@vitest/ui@5.1.0)(esbuild@0.28.2)(typescript@7.0.2)
+
+  jira:
+    dependencies:
+      '@opencode/plugin':
+        specifier: 'catalog:'
+        version: 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 26.6.6
+      effect:
+        specifier: 'catalog:'
+        version: 4.1.0
       solid-js:
         specifier: 'catalog:'
         version: 1.9.18
@@ -493,9 +521,9 @@ packages:
   '@blazediff/core@1.10.0':
     resolution: {integrity: sha512-AOQff0zgR7cGsZL+4E7hVkmujoPUpm0J9xzWGWZj5wCjd3gmxESXAPfKyuzs93VdpQNFhHlBhfOjrcZ+XTERtQ==}
 
-  '@effect/opentelemetry@4.0.1':
-    resolution: {integrity: sha512-MZ7M1a1dxMqTqeNwIGSECjO7RrReEgeEwHo8BnbOqP+8IfVpdiJi/iPCmkFVWlAxanMl4qhsq69e0Hkul9t+bA==}
-    engines: {node: '>=18.0.0'}
+  '@effect/opentelemetry@4.1.0':
+    resolution: {integrity: sha512-j9bNzQaoQvcnimBFMG0i3piEW20E8HjkXAQHTJN/XqG2e4uJ9zCv53/HCNzD7+ooFn5S4nwQy/BOXeNReMIe+A==}
+    engines: {node: '>=22.19.0'}
     peerDependencies:
       '@opentelemetry/api': '>=1.9.0 <2.0.0'
       '@opentelemetry/api-logs': '>=0.203.0 <0.300.0'
@@ -506,7 +534,7 @@ packages:
       '@opentelemetry/sdk-trace-node': '>=2.0.0 <3.0.0'
       '@opentelemetry/sdk-trace-web': '>=2.0.0 <3.0.0'
       '@opentelemetry/semantic-conventions': '>=1.33.0 <2.0.0'
-      effect: ^4.0.1
+      effect: ^4.1.0
     peerDependenciesMeta:
       '@opentelemetry/api':
         optional: true
@@ -525,17 +553,17 @@ packages:
       '@opentelemetry/sdk-trace-web':
         optional: true
 
-  '@effect/platform-node-shared@4.0.1':
-    resolution: {integrity: sha512-VanaejudEhKJ4mpmqnEzdncVUhN6sGSO9ZDND54mRxAlZxj+4dYAWjDTYAy9o4tJo9aALeP2U8cVcOFzEdSeLg==}
-    engines: {node: '>=18.0.0'}
+  '@effect/platform-node-shared@4.1.0':
+    resolution: {integrity: sha512-uYQfFRoxWLo8fIhiSeBcmz/R1ooOfE3HF3cWHFgxz82tZMk2Wn02BGABcdLmaAch9VpDLbtWnuhSxNyBsGMUFg==}
+    engines: {node: '>=22.19.0'}
     peerDependencies:
-      effect: ^4.0.1
+      effect: ^4.1.0
 
-  '@effect/platform-node@4.0.1':
-    resolution: {integrity: sha512-FT0Fu5LO0/XP9zBpj0HqrtJNLluK4StNKqf6TSulUsjp8FPBsDVXGJiDuyoN5J2yVMT7tgvhxSwaDcObWVRIaQ==}
-    engines: {node: '>=18.0.0'}
+  '@effect/platform-node@4.1.0':
+    resolution: {integrity: sha512-v+X7moGVF9k5oMVvz0slA+NgtEod+W+oygeI285MDJgSlUCW3JcqElj+cD3rlijFZtpKhC7RLkU1GuCxjGHTpA==}
+    engines: {node: '>=22.19.0'}
     peerDependencies:
-      effect: ^4.0.1
+      effect: ^4.1.0
       redis: '>=5.0.0 <7.0.0'
 
   '@electron/get@2.0.3':
@@ -821,13 +849,13 @@ packages:
   '@octokit/types@18.0.0':
     resolution: {integrity: sha512-l6bAF43PNxkJp6g+W4PjoUSSkxHomXw2nOum5CTftJz1NlV3vu93NImgOYtLf6CbBUb5j+fiuzW0PPQ5JTSvZA==}
 
-  '@opencode/ai@2.2.0':
-    resolution: {integrity: sha512-Jn8gKsJfC/BGhStq07uWqgk3D7ue77GE8bFDdTLPQSkdtVBbbJB2/HVmxHDCLjbmE53MqSynu4aDEBeX5PHfHQ==}
+  '@opencode/ai@2.3.2':
+    resolution: {integrity: sha512-OpVFIB8AUY/Ax/OEhBWjgYjyBrSxWXZR79d0v3f6BXIeKwJVZ2Gk4n7U9u3srcwBF6SjII3/PhRWn0ByaHDqEg==}
 
-  '@opencode/client@2.2.0':
-    resolution: {integrity: sha512-gus2XLaUcGh3ERH+OnOqEO6K379cS9DFNPOgWr8OTM2VM+zn8b4Qe+dgfyysTayv1BpMMlILsRG4eKlDSuyYWQ==}
+  '@opencode/client@2.3.2':
+    resolution: {integrity: sha512-zwlR1Q0MQxpLJU4tILaaNyHrexNQpTbquy4Lv4i5lwkSba5MMuhK0tsPmGhyLIrqAyY+sY1qI75dOzOpsCJK7Q==}
     peerDependencies:
-      effect: 4.0.1
+      effect: 4.1.0
       solid-js: '>=1.9.0'
     peerDependenciesMeta:
       effect:
@@ -835,12 +863,12 @@ packages:
       solid-js:
         optional: true
 
-  '@opencode/plugin@2.2.0':
-    resolution: {integrity: sha512-1h1OM9B1RnUu2HEAYnUGcT21ib7aPXuIBUE0E1XYBhfmLvgMCmHWxtFUnU4sPyNHuY+EZ3kV501YGffAdxyI4A==}
+  '@opencode/plugin@2.3.2':
+    resolution: {integrity: sha512-1fAIk7Vb1mnDenWUo3WrNW1QvkVMinRRFVgA+b8MnOHSiR0RLKzZ/yotYf4AoMi8cTaJHytqQMYZgngRHAqTkA==}
     peerDependencies:
-      '@opencode/theme': 2.2.0
-      '@opentui/core': 0.7.0
-      '@opentui/solid': 0.7.0
+      '@opencode/theme': 2.3.2
+      '@opentui/core': '>=0.8.4'
+      '@opentui/solid': '>=0.8.4'
       electron: '*'
       solid-js: '>=1.9.0'
       vite: '>=6'
@@ -861,14 +889,14 @@ packages:
       vite-plugin-solid:
         optional: true
 
-  '@opencode/protocol@2.2.0':
-    resolution: {integrity: sha512-bvZGwEU0WVgHXzDOsbmUluMWSCQZw6NVKNI+dGjNynxVWRvvpFJ+GA1wDiBkaAwx7dJ6FOH3SO3kNCJlPu2kOA==}
+  '@opencode/protocol@2.3.2':
+    resolution: {integrity: sha512-AEb1DZeWYrCVm+g2OUPWBLskCzGr4sXYj59Do8PzTHFb4a6jrDL0wN7kqYq65NrXGOW32alwxlnMHxJSjAfJ+w==}
 
-  '@opencode/schema@2.2.0':
-    resolution: {integrity: sha512-oyj1xiSnGA/Gwmqyk3MUVOwleozuT1Lt/x7eErhvNO0lyq2xhONnu7mK+riV98uMbD6+GxGWQV369gmpO9fAkQ==}
+  '@opencode/schema@2.3.2':
+    resolution: {integrity: sha512-9PqnLzPNV0QTG3HrRHTVjVEQ2Hv+zcprM6QvwxNVdQ3RUTmtdpmUD6/0y0NQnHFzHwI3hpnkNCIstjw9TVsJcg==}
 
-  '@opencode/util@2.2.0':
-    resolution: {integrity: sha512-krxUN1w9Lwb9mk4WLCOJ4ki/RmqURN8bZ3evDBNgnOZYWI7at44ztDOX1+BAHJcfHFNTJER+2/j7MHudcnYhtQ==}
+  '@opencode/util@2.3.2':
+    resolution: {integrity: sha512-ntNbSHLWwY5uHEj+u0U6fRdUldTX9+THklfnMsybQ6SHOyv7H5eppX/Se59daJlfcxq5AfkIKnp3Cide6OR8kw==}
 
   '@opentelemetry/api-logs@0.219.0':
     resolution: {integrity: sha512-FFx7YnaYJlIjqWW/AG/yAZ0L/NEY724PipXXXQLdtZPbLwBGbUMTGL1i/esI56TWfTUXxhLfpgrnWJCG8aUJyg==}
@@ -2008,8 +2036,8 @@ packages:
   ecdsa-sig-formatter@1.0.11:
     resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
 
-  effect@4.0.1:
-    resolution: {integrity: sha512-b1VlQG9g8fwxE5QnIZuPoOP/0MsqHJSRKxUijjoM80E5q95FXrX5yWtY5XI8G+GJsBQAVSDbLS458z9a++uVvw==}
+  effect@4.1.0:
+    resolution: {integrity: sha512-lGx2MJJyrXA8RZb2UpQ/0Nkb5Utaimby7oD92+18noBxLPE85IFOvptdzau8dvcxAOwfwHo9iqapbKeFzqQM/Q==}
 
   electron-to-chromium@1.5.476:
     resolution: {integrity: sha512-LnPnRZ0esKB9NjsSIaC+mffW+5dAtBui6kbK5f9Qykblj4Q33cn6yIhuCcTVjwpvL3YJPqqQ4IlsNyriGNpyFQ==}
@@ -3409,10 +3437,10 @@ snapshots:
 
   '@blazediff/core@1.10.0': {}
 
-  '@effect/opentelemetry@4.0.1(@opentelemetry/api-logs@0.219.0)(@opentelemetry/api@1.9.0)(@opentelemetry/resources@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.219.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-node@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.44.0)(effect@4.0.1)':
+  '@effect/opentelemetry@4.1.0(@opentelemetry/api-logs@0.219.0)(@opentelemetry/api@1.9.0)(@opentelemetry/resources@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.219.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-node@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.44.0)(effect@4.1.0)':
     dependencies:
       '@opentelemetry/semantic-conventions': 1.44.0
-      effect: 4.0.1
+      effect: 4.1.0
     optionalDependencies:
       '@opentelemetry/api': 1.9.0
       '@opentelemetry/api-logs': 0.219.0
@@ -3422,19 +3450,19 @@ snapshots:
       '@opentelemetry/sdk-trace-base': 2.8.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-node': 2.8.0(@opentelemetry/api@1.9.0)
 
-  '@effect/platform-node-shared@4.0.1(effect@4.0.1)':
+  '@effect/platform-node-shared@4.1.0(effect@4.1.0)':
     dependencies:
       '@types/ws': 8.18.2
-      effect: 4.0.1
+      effect: 4.1.0
       ws: 8.22.1
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node@4.0.1(effect@4.0.1)(redis@6.3.1(@opentelemetry/api@1.9.0))':
+  '@effect/platform-node@4.1.0(effect@4.1.0)(redis@6.3.1(@opentelemetry/api@1.9.0))':
     dependencies:
-      '@effect/platform-node-shared': 4.0.1(effect@4.0.1)
-      effect: 4.0.1
+      '@effect/platform-node-shared': 4.1.0(effect@4.1.0)
+      effect: 4.1.0
       redis: 6.3.1(@opentelemetry/api@1.9.0)
       undici: 8.12.3
     transitivePeerDependencies:
@@ -3739,35 +3767,35 @@ snapshots:
     dependencies:
       '@octokit/openapi-types': 29.0.1
 
-  '@opencode/ai@2.2.0':
+  '@opencode/ai@2.3.2':
     dependencies:
       '@aws-sdk/credential-providers': 3.1057.0
-      '@opencode/schema': 2.2.0
+      '@opencode/schema': 2.3.2
       '@smithy/eventstream-codec': 4.2.14
       '@smithy/util-utf8': 4.2.2
       aws4fetch: 1.0.20
-      effect: 4.0.1
+      effect: 4.1.0
       google-auth-library: 10.5.0
     transitivePeerDependencies:
       - supports-color
 
-  '@opencode/client@2.2.0(effect@4.0.1)(solid-js@1.9.18)':
+  '@opencode/client@2.3.2(effect@4.1.0)(solid-js@1.9.18)':
     dependencies:
-      '@opencode/protocol': 2.2.0
-      '@opencode/schema': 2.2.0
+      '@opencode/protocol': 2.3.2
+      '@opencode/schema': 2.3.2
     optionalDependencies:
-      effect: 4.0.1
+      effect: 4.1.0
       solid-js: 1.9.18
 
-  '@opencode/plugin@2.2.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@38.8.6)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))':
+  '@opencode/plugin@2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@38.8.6)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))':
     dependencies:
       '@ai-sdk/provider': 3.0.8
-      '@opencode/ai': 2.2.0
-      '@opencode/client': 2.2.0(effect@4.0.1)(solid-js@1.9.18)
-      '@opencode/protocol': 2.2.0
-      '@opencode/schema': 2.2.0
-      '@opencode/util': 2.2.0(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))
-      effect: 4.0.1
+      '@opencode/ai': 2.3.2
+      '@opencode/client': 2.3.2(effect@4.1.0)(solid-js@1.9.18)
+      '@opencode/protocol': 2.3.2
+      '@opencode/schema': 2.3.2
+      '@opencode/util': 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))
+      effect: 4.1.0
     optionalDependencies:
       electron: 38.8.6
       solid-js: 1.9.18
@@ -3781,15 +3809,15 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@opencode/plugin@2.2.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))':
+  '@opencode/plugin@2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))':
     dependencies:
       '@ai-sdk/provider': 3.0.8
-      '@opencode/ai': 2.2.0
-      '@opencode/client': 2.2.0(effect@4.0.1)(solid-js@1.9.18)
-      '@opencode/protocol': 2.2.0
-      '@opencode/schema': 2.2.0
-      '@opencode/util': 2.2.0(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))
-      effect: 4.0.1
+      '@opencode/ai': 2.3.2
+      '@opencode/client': 2.3.2(effect@4.1.0)(solid-js@1.9.18)
+      '@opencode/protocol': 2.3.2
+      '@opencode/schema': 2.3.2
+      '@opencode/util': 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))
+      effect: 4.1.0
     optionalDependencies:
       electron: 39.8.10
       solid-js: 1.9.18
@@ -3803,21 +3831,21 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@opencode/protocol@2.2.0':
+  '@opencode/protocol@2.3.2':
     dependencies:
-      '@opencode/schema': 2.2.0
-      effect: 4.0.1
+      '@opencode/schema': 2.3.2
+      effect: 4.1.0
 
-  '@opencode/schema@2.2.0':
+  '@opencode/schema@2.3.2':
     dependencies:
       '@standard-schema/spec': 1.1.0
-      effect: 4.0.1
+      effect: 4.1.0
 
-  '@opencode/util@2.2.0(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))':
+  '@opencode/util@2.3.2(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))':
     dependencies:
-      '@effect/opentelemetry': 4.0.1(@opentelemetry/api-logs@0.219.0)(@opentelemetry/api@1.9.0)(@opentelemetry/resources@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.219.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-node@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.44.0)(effect@4.0.1)
-      '@effect/platform-node': 4.0.1(effect@4.0.1)(redis@6.3.1(@opentelemetry/api@1.9.0))
-      '@effect/platform-node-shared': 4.0.1(effect@4.0.1)
+      '@effect/opentelemetry': 4.1.0(@opentelemetry/api-logs@0.219.0)(@opentelemetry/api@1.9.0)(@opentelemetry/resources@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.219.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-node@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.44.0)(effect@4.1.0)
+      '@effect/platform-node': 4.1.0(effect@4.1.0)(redis@6.3.1(@opentelemetry/api@1.9.0))
+      '@effect/platform-node-shared': 4.1.0(effect@4.1.0)
       '@npmcli/arborist': 9.4.0
       '@npmcli/config': 10.8.1
       '@opentelemetry/api': 1.9.0
@@ -3830,7 +3858,7 @@ snapshots:
       '@opentelemetry/sdk-trace-base': 2.8.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-node': 2.8.0(@opentelemetry/api@1.9.0)
       cross-spawn: 7.0.6
-      effect: 4.0.1
+      effect: 4.1.0
       glob: 13.0.5
       mime-types: 3.0.2
       minimatch: 10.2.5
@@ -4694,7 +4722,7 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  effect@4.0.1: {}
+  effect@4.1.0: {}
 
   electron-to-chromium@1.5.476: {}
 

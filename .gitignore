@@ -4,3 +4,4 @@ dist/
 .vite-plus/
 .vitest/
 *.tsbuildinfo
+.DS_Store

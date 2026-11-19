@@ -60,63 +60,56 @@ export function GitHubSettings() {
 	}
 
 	return (
-		<>
-			<div class="settings-tab-header">
-				<div class="settings-tab-header-row">
-					<h2 class="settings-tab-title">{ctx.t("settings.title")}</h2>
-				</div>
-			</div>
-			<div class="settings-tab-body settings-tab-body--sectioned">
-				<section class="settings-section" aria-label={ctx.t("settings.hosts")} data-action="github-token">
-					<h3 class="settings-section-title">{ctx.t("settings.hosts")}</h3>
-					<p class="ghp-settings-hint">{ctx.t("settings.hosts.description")}</p>
-					<div data-component="settings-list" data-action="github-hosts">
-						<For each={hosts()}>
-							{(item) => (
-								<div data-component="settings-row">
-									<div data-slot="settings-row-copy">
-										<div data-slot="settings-row-title">{item.host}</div>
-										<div data-slot="settings-row-description">
-											{item.user
-												? ctx.t("settings.token.connected", { user: item.user })
-												: ctx.t("settings.token.missing")}
-										</div>
-									</div>
-									<div data-slot="settings-row-control" class="ghp-settings-actions">
-										<ctx.ui.Button size="small" variant="neutral" disabled={busy()} onClick={() => edit(item.host)}>
-											{ctx.t(item.user ? "settings.token.edit" : "settings.token.set")}
-										</ctx.ui.Button>
-										<Show when={item.user}>
-											<ctx.ui.Button
-												size="small"
-												variant="neutral"
-												disabled={busy()}
-												onClick={() => void save(item.host, null)}
-											>
-												{ctx.t("settings.token.remove")}
-											</ctx.ui.Button>
-										</Show>
-									</div>
-								</div>
-							)}
-						</For>
-					</div>
-					<div class="ghp-settings-add-host">
-						<ctx.ui.Button size="small" variant="ghost" icon="plus" disabled={busy()} onClick={() => edit()}>
-							{ctx.t("settings.host.add")}
-						</ctx.ui.Button>
-					</div>
-					<Show when={accounts.error}>
-						<p class="ghp-settings-hint" role="alert">
-							{describe(accounts.error)}
-						</p>
-						<ctx.ui.Button size="small" variant="neutral" onClick={() => void reload()}>
-							{ctx.t("retry")}
-						</ctx.ui.Button>
-					</Show>
-				</section>
-			</div>
-		</>
+		<ctx.ui.SettingsLayout title={ctx.t("settings.title")} description={ctx.t("settings.hosts.description")}>
+			<ctx.ui.SettingsSection
+				title={ctx.t("settings.hosts")}
+				footer={
+					<>
+						<div class="ghp-settings-add-host" data-action="github-hosts">
+							<ctx.ui.Button size="small" variant="ghost" icon="plus" disabled={busy()} onClick={() => edit()}>
+								{ctx.t("settings.host.add")}
+							</ctx.ui.Button>
+						</div>
+						<Show when={accounts.error}>
+							<p class="ghp-settings-hint" role="alert">
+								{describe(accounts.error)}
+							</p>
+							<ctx.ui.Button size="small" variant="neutral" onClick={() => void reload()}>
+								{ctx.t("retry")}
+							</ctx.ui.Button>
+						</Show>
+					</>
+				}
+			>
+				<For each={hosts()}>
+					{(item) => (
+						<ctx.ui.SettingsRow
+							id={item.host === "github.com" ? "github-token" : undefined}
+							title={item.host}
+							description={
+								item.user ? ctx.t("settings.token.connected", { user: item.user }) : ctx.t("settings.token.missing")
+							}
+						>
+							<div class="ghp-settings-actions">
+								<ctx.ui.Button size="small" variant="neutral" disabled={busy()} onClick={() => edit(item.host)}>
+									{ctx.t(item.user ? "settings.token.edit" : "settings.token.set")}
+								</ctx.ui.Button>
+								<Show when={item.user}>
+									<ctx.ui.Button
+										size="small"
+										variant="neutral"
+										disabled={busy()}
+										onClick={() => void save(item.host, null)}
+									>
+										{ctx.t("settings.token.remove")}
+									</ctx.ui.Button>
+								</Show>
+							</div>
+						</ctx.ui.SettingsRow>
+					)}
+				</For>
+			</ctx.ui.SettingsSection>
+		</ctx.ui.SettingsLayout>
 	)
 }
 
