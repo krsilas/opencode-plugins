@@ -1,0 +1,50 @@
+{
+	"name": "opencode-copilot-websearch",
+	"version": "0.1.0",
+	"description": "OpenCode plugin: web search backend powered by GitHub Copilot's hosted MCP web search.",
+	"keywords": [
+		"copilot",
+		"github-copilot",
+		"opencode",
+		"opencode-plugin",
+		"websearch"
+	],
+	"homepage": "https://github.com/krsilas/opencode-plugins/tree/main/copilot-websearch",
+	"license": "MIT",
+	"author": "Silas Krause",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/krsilas/opencode-plugins.git",
+		"directory": "copilot-websearch"
+	},
+	"files": [
+		"src/*.ts"
+	],
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"lint": "vp lint --deny-warnings src tests",
+		"lint:fix": "vp lint --fix --deny-warnings src tests",
+		"format": "vp fmt src tests",
+		"format:check": "vp fmt --check src tests",
+		"typecheck": "tsc --noEmit",
+		"test": "node --test tests/*.test.ts",
+		"prepublishOnly": "vp run typecheck && vp run test"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/client": "catalog:",
+		"@opencode/plugin": "catalog:",
+		"zod": "catalog:"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"effect": "catalog:",
+		"typescript": "catalog:",
+		"vite-plus": "catalog:"
+	},
+	"peerDependencies": {
+		"effect": "^4.0.0"
+	}
+}

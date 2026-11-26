@@ -1,10 +1,12 @@
 packages:
   - activity-indicator
+  - copilot-websearch
   - figma
   - github
 catalog:
+  "@modelcontextprotocol/client": ^2.4.0
   "@octokit/core": ^7.0.8
-  "@opencode/plugin": 2.3.2
+  "@opencode/plugin": 2.4.0
   "@types/node": ^26.6.5
   effect: 4.1.0
   solid-js: ^1.9.17

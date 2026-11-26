@@ -164,12 +164,15 @@ settings:
 
 catalogs:
   default:
+    '@modelcontextprotocol/client':
+      specifier: ^2.4.0
+      version: 2.4.0
     '@octokit/core':
       specifier: ^7.0.8
       version: 7.0.8
     '@opencode/plugin':
-      specifier: 2.3.2
-      version: 2.3.2
+      specifier: 2.4.0
+      version: 2.4.0
     '@types/node':
       specifier: ^26.6.5
       version: 26.6.6
@@ -191,6 +194,9 @@ catalogs:
     vite-plus:
       specifier: 1.5.0
       version: 1.5.0
+    zod:
+      specifier: ^4.6.7
+      version: 4.6.7
 
 overrides:
   vite@*: npm:@voidzero-dev/vite-plus-core@1.5.0
@@ -217,7 +223,7 @@ importers:
     dependencies:
       '@opencode/plugin':
         specifier: 'catalog:'
-        version: 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
+        version: 2.4.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -244,11 +250,36 @@ importers:
         specifier: 'catalog:'
         version: 1.5.0(@opentelemetry/api@1.9.0)(@types/node@26.6.6)(@vitest/ui@5.1.0)(esbuild@0.28.2)(typescript@7.0.2)
 
+  copilot-websearch:
+    dependencies:
+      '@modelcontextprotocol/client':
+        specifier: 'catalog:'
+        version: 2.4.0
+      '@opencode/plugin':
+        specifier: 'catalog:'
+        version: 2.4.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
+      zod:
+        specifier: 'catalog:'
+        version: 4.6.7
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 26.6.6
+      effect:
+        specifier: 'catalog:'
+        version: 4.1.0
+      typescript:
+        specifier: 'catalog:'
+        version: 7.0.2
+      vite-plus:
+        specifier: 'catalog:'
+        version: 1.5.0(@opentelemetry/api@1.9.0)(@types/node@26.6.6)(@vitest/ui@5.1.0)(esbuild@0.28.2)(typescript@7.0.2)
+
   figma:
     dependencies:
       '@opencode/plugin':
         specifier: 'catalog:'
-        version: 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@38.8.6)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
+        version: 2.4.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@38.8.6)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -282,7 +313,7 @@ importers:
         version: 7.0.8
       '@opencode/plugin':
         specifier: 'catalog:'
-        version: 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
+        version: 2.4.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -310,7 +341,7 @@ importers:
     dependencies:
       '@opencode/plugin':
         specifier: 'catalog:'
-        version: 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
+        version: 2.4.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -757,6 +788,14 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
+  '@modelcontextprotocol/client@2.4.0':
+    resolution: {integrity: sha512-LgrD2OphHuG12vfKFKz6SOnq7bKHQmhGJIAYdD+MZBn2npHEyry6uD8zvktodtl5CQM85MO0anUyD9JwmUmxww==}
+    engines: {node: '>=20'}
+
+  '@modelcontextprotocol/core@2.4.0':
+    resolution: {integrity: sha512-z8QBKqdfXLPzkLQuG4xp8hrVEMm1PZ1IgxMN2sMbJiFiAKOWXnAzogXn2W4aqIBlP1ea6U5yiqVquvUNM1Cj6Q==}
+    engines: {node: '>=20'}
+
   '@npmcli/agent@4.0.2':
     resolution: {integrity: sha512-EUEuWAxnL07Sp5/iC/1X6Xj+XThUvnbei9zfRWZdEXa7lss9RTHMhAHBeg+MZ5To9s/gGaSI+UwZTPdYMvKSeg==}
     engines: {node: ^20.17.0 || >=22.9.0}
@@ -849,11 +888,11 @@ packages:
   '@octokit/types@18.0.0':
     resolution: {integrity: sha512-l6bAF43PNxkJp6g+W4PjoUSSkxHomXw2nOum5CTftJz1NlV3vu93NImgOYtLf6CbBUb5j+fiuzW0PPQ5JTSvZA==}
 
-  '@opencode/ai@2.3.2':
-    resolution: {integrity: sha512-OpVFIB8AUY/Ax/OEhBWjgYjyBrSxWXZR79d0v3f6BXIeKwJVZ2Gk4n7U9u3srcwBF6SjII3/PhRWn0ByaHDqEg==}
+  '@opencode/ai@2.4.0':
+    resolution: {integrity: sha512-yQpPtmZeORBFJlI5ptJdkEnhHSXve9aVHXE93VoCDO7J2Tj0GLh/UFAZicVjtS180hvdMU5w/zFlcQwHx9W66g==}
 
-  '@opencode/client@2.3.2':
-    resolution: {integrity: sha512-zwlR1Q0MQxpLJU4tILaaNyHrexNQpTbquy4Lv4i5lwkSba5MMuhK0tsPmGhyLIrqAyY+sY1qI75dOzOpsCJK7Q==}
+  '@opencode/client@2.4.0':
+    resolution: {integrity: sha512-U8IKpgERCdM5JRFkaHsE1xkx+jT9IeZrVQsN4Xb7W4kcIWCNwDPNIp00ihcYECEDhejbUH/2uwIECoadDezoxQ==}
     peerDependencies:
       effect: 4.1.0
       solid-js: '>=1.9.0'
@@ -863,12 +902,12 @@ packages:
       solid-js:
         optional: true
 
-  '@opencode/plugin@2.3.2':
-    resolution: {integrity: sha512-1fAIk7Vb1mnDenWUo3WrNW1QvkVMinRRFVgA+b8MnOHSiR0RLKzZ/yotYf4AoMi8cTaJHytqQMYZgngRHAqTkA==}
+  '@opencode/plugin@2.4.0':
+    resolution: {integrity: sha512-CzGbjGFqIFLkjRoNB8nQrwXHRQAtpIOHS/3KmOHdpDdA7JA3Nq7L++xX5iZAeumWx2KrYx0gJyZQmTMZ7dEVHA==}
     peerDependencies:
-      '@opencode/theme': 2.3.2
-      '@opentui/core': '>=0.8.4'
-      '@opentui/solid': '>=0.8.4'
+      '@opencode/theme': 2.4.0
+      '@opentui/core': '>=0.9.4'
+      '@opentui/solid': '>=0.9.4'
       electron: '*'
       solid-js: '>=1.9.0'
       vite: '>=6'
@@ -889,14 +928,14 @@ packages:
       vite-plugin-solid:
         optional: true
 
-  '@opencode/protocol@2.3.2':
-    resolution: {integrity: sha512-AEb1DZeWYrCVm+g2OUPWBLskCzGr4sXYj59Do8PzTHFb4a6jrDL0wN7kqYq65NrXGOW32alwxlnMHxJSjAfJ+w==}
+  '@opencode/protocol@2.4.0':
+    resolution: {integrity: sha512-SvbUy1ZIUp2L24JpZoIuoGoUxhy8c5xg2sDQk25iUqONzgK31tUpi623wOIXbNScZmOvnOOjdZ87jufhShiIfg==}
 
-  '@opencode/schema@2.3.2':
-    resolution: {integrity: sha512-9PqnLzPNV0QTG3HrRHTVjVEQ2Hv+zcprM6QvwxNVdQ3RUTmtdpmUD6/0y0NQnHFzHwI3hpnkNCIstjw9TVsJcg==}
+  '@opencode/schema@2.4.0':
+    resolution: {integrity: sha512-1BpbHYL7x/BRpxzg7hOM6qJPWU5bZZcUnGX3B+0WlO0F+RTAG35BRVW5Y8orYgSAORxkpjuWt682/3WNXKPZSQ==}
 
-  '@opencode/util@2.3.2':
-    resolution: {integrity: sha512-ntNbSHLWwY5uHEj+u0U6fRdUldTX9+THklfnMsybQ6SHOyv7H5eppX/Se59daJlfcxq5AfkIKnp3Cide6OR8kw==}
+  '@opencode/util@2.4.0':
+    resolution: {integrity: sha512-mHuo4N8C2YOQDETZo/rpFD6FUaLFvtQ7xzDtCyZdEr8KzmAL4zAYNNw4/f31pUseNzTAYTqjzqODLueeTBZjtA==}
 
   '@opentelemetry/api-logs@0.219.0':
     resolution: {integrity: sha512-FFx7YnaYJlIjqWW/AG/yAZ0L/NEY724PipXXXQLdtZPbLwBGbUMTGL1i/esI56TWfTUXxhLfpgrnWJCG8aUJyg==}
@@ -2099,6 +2138,14 @@ packages:
   estree-walker@3.0.3:
     resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
 
+  eventsource-parser@3.1.1:
+    resolution: {integrity: sha512-EKN1vKAMcZ8MlYMpaNuxN6R9yakzH6uajHcHVTqWJzvu5pWw9DyhbP35HH8MVBQ+dZjAfDxk+A8NiR9KWaXiyQ==}
+    engines: {node: '>=18.0.0'}
+
+  eventsource@3.0.7:
+    resolution: {integrity: sha512-CRT1WTyuQoD771GW56XEZFQ/ZoSfWid1alKGDYMmkt2yl8UXrVR4pspqWNEcqKvVIzg6PAltWjxcSSPrboA4iA==}
+    engines: {node: '>=18.0.0'}
+
   expect-type@1.4.0:
     resolution: {integrity: sha512-KfYbmpRm0VbLjEvVa9yGwCi9GI34xvi7A/HXYWQO65CSD2u3MczUJSuwXKFIxlGsgBQizV9q5J9NHj4VG0n+pA==}
     engines: {node: '>=12.0.0'}
@@ -2297,6 +2344,9 @@ packages:
 
   jackspeak@3.4.3:
     resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
+
+  jose@6.2.18:
+    resolution: {integrity: sha512-doV4thUwgkrycJH4yLeqwTGIIZphHl+pk7CPReuMIhYhncmgzdko85MaCG4YQFTxqMFr1/oEH32tZuKKovcDEg==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -2683,6 +2733,10 @@ packages:
   picomatch@4.0.7:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
     engines: {node: '>=12'}
+
+  pkce-challenge@5.0.2:
+    resolution: {integrity: sha512-vCc54+qyIfKC5e2UN28AZKElwqjLINgiIV3RKI8pDu93TjaAJoB3QrgMzEBouy8yOKsXVXdAinO1QArJf9x5WA==}
+    engines: {node: '>=16.20.0'}
 
   pngjs@7.0.0:
     resolution: {integrity: sha512-LKWqWJRhstyYo9pGvgor/ivk2w94eSjE3RGVuzLGlr3NmD8bf7RcYGze1mNdEHRP6TRP6rMuDHk5t44hnTRyow==}
@@ -3104,6 +3158,9 @@ packages:
   yuku-parser@0.19.0:
     resolution: {integrity: sha512-XrBh9ZiQK5mJVRxZBAvD6LwRyAYrK3MFtH3+onyuxFL5hFD44EC3QOmIC1FjTj6H2MMwq46/NAI+NZxLZPZgxg==}
     engines: {node: '>=14.18.0'}
+
+  zod@4.6.7:
+    resolution: {integrity: sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==}
 
 snapshots:
 
@@ -3597,6 +3654,20 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
+  '@modelcontextprotocol/client@2.4.0':
+    dependencies:
+      '@modelcontextprotocol/core': 2.4.0
+      cross-spawn: 7.0.6
+      eventsource: 3.0.7
+      eventsource-parser: 3.1.1
+      jose: 6.2.18
+      pkce-challenge: 5.0.2
+      zod: 4.6.7
+
+  '@modelcontextprotocol/core@2.4.0':
+    dependencies:
+      zod: 4.6.7
+
   '@npmcli/agent@4.0.2':
     dependencies:
       agent-base: 7.1.4
@@ -3767,10 +3838,10 @@ snapshots:
     dependencies:
       '@octokit/openapi-types': 29.0.1
 
-  '@opencode/ai@2.3.2':
+  '@opencode/ai@2.4.0':
     dependencies:
       '@aws-sdk/credential-providers': 3.1057.0
-      '@opencode/schema': 2.3.2
+      '@opencode/schema': 2.4.0
       '@smithy/eventstream-codec': 4.2.14
       '@smithy/util-utf8': 4.2.2
       aws4fetch: 1.0.20
@@ -3779,22 +3850,22 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@opencode/client@2.3.2(effect@4.1.0)(solid-js@1.9.18)':
+  '@opencode/client@2.4.0(effect@4.1.0)(solid-js@1.9.18)':
     dependencies:
-      '@opencode/protocol': 2.3.2
-      '@opencode/schema': 2.3.2
+      '@opencode/protocol': 2.4.0
+      '@opencode/schema': 2.4.0
     optionalDependencies:
       effect: 4.1.0
       solid-js: 1.9.18
 
-  '@opencode/plugin@2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@38.8.6)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))':
+  '@opencode/plugin@2.4.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@38.8.6)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))':
     dependencies:
       '@ai-sdk/provider': 3.0.8
-      '@opencode/ai': 2.3.2
-      '@opencode/client': 2.3.2(effect@4.1.0)(solid-js@1.9.18)
-      '@opencode/protocol': 2.3.2
-      '@opencode/schema': 2.3.2
-      '@opencode/util': 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))
+      '@opencode/ai': 2.4.0
+      '@opencode/client': 2.4.0(effect@4.1.0)(solid-js@1.9.18)
+      '@opencode/protocol': 2.4.0
+      '@opencode/schema': 2.4.0
+      '@opencode/util': 2.4.0(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))
       effect: 4.1.0
     optionalDependencies:
       electron: 38.8.6
@@ -3809,14 +3880,14 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@opencode/plugin@2.3.2(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))':
+  '@opencode/plugin@2.4.0(@opentelemetry/semantic-conventions@1.44.0)(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(electron@39.8.10)(redis@6.3.1(@opentelemetry/api@1.9.0))(solid-js@1.9.18)(vite-plugin-solid@2.11.15(@voidzero-dev/vite-plus-core@1.5.0(@types/node@26.6.6)(esbuild@0.28.2)(typescript@7.0.2))(solid-js@1.9.18))':
     dependencies:
       '@ai-sdk/provider': 3.0.8
-      '@opencode/ai': 2.3.2
-      '@opencode/client': 2.3.2(effect@4.1.0)(solid-js@1.9.18)
-      '@opencode/protocol': 2.3.2
-      '@opencode/schema': 2.3.2
-      '@opencode/util': 2.3.2(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))
+      '@opencode/ai': 2.4.0
+      '@opencode/client': 2.4.0(effect@4.1.0)(solid-js@1.9.18)
+      '@opencode/protocol': 2.4.0
+      '@opencode/schema': 2.4.0
+      '@opencode/util': 2.4.0(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))
       effect: 4.1.0
     optionalDependencies:
       electron: 39.8.10
@@ -3831,17 +3902,17 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@opencode/protocol@2.3.2':
+  '@opencode/protocol@2.4.0':
     dependencies:
-      '@opencode/schema': 2.3.2
+      '@opencode/schema': 2.4.0
       effect: 4.1.0
 
-  '@opencode/schema@2.3.2':
+  '@opencode/schema@2.4.0':
     dependencies:
       '@standard-schema/spec': 1.1.0
       effect: 4.1.0
 
-  '@opencode/util@2.3.2(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))':
+  '@opencode/util@2.4.0(@opentelemetry/semantic-conventions@1.44.0)(redis@6.3.1(@opentelemetry/api@1.9.0))':
     dependencies:
       '@effect/opentelemetry': 4.1.0(@opentelemetry/api-logs@0.219.0)(@opentelemetry/api@1.9.0)(@opentelemetry/resources@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-logs@0.219.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-metrics@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-base@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/sdk-trace-node@2.8.0(@opentelemetry/api@1.9.0))(@opentelemetry/semantic-conventions@1.44.0)(effect@4.1.0)
       '@effect/platform-node': 4.1.0(effect@4.1.0)(redis@6.3.1(@opentelemetry/api@1.9.0))
@@ -4804,6 +4875,12 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.10
 
+  eventsource-parser@3.1.1: {}
+
+  eventsource@3.0.7:
+    dependencies:
+      eventsource-parser: 3.1.1
+
   expect-type@1.4.0: {}
 
   exponential-backoff@3.1.3: {}
@@ -5033,6 +5110,8 @@ snapshots:
       '@isaacs/cliui': 8.0.2
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
+
+  jose@6.2.18: {}
 
   js-tokens@4.0.0: {}
 
@@ -5439,6 +5518,8 @@ snapshots:
   picocolors@1.1.1: {}
 
   picomatch@4.0.7: {}
+
+  pkce-challenge@5.0.2: {}
 
   pngjs@7.0.0: {}
 
@@ -5895,3 +5976,5 @@ snapshots:
     dependencies:
       '@yuku-toolchain/types': 0.19.0
       yuku-core: 0.19.0
+
+  zod@4.6.7: {}
