@@ -53,7 +53,7 @@ export const STATE_ICON: Record<Pull["state"], IconName> = {
 export const CHECK_ICON: Record<CheckState, IconName> = {
 	success: "circle-check",
 	failure: "circle-x",
-	pending: "outline-steer",
+	pending: "status",
 	neutral: "circle-ban-sign",
 }
 
